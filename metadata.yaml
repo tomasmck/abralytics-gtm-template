@@ -15,5 +15,5 @@
 homepage: "https://www.abralytics.com"
 documentation: "https://abralytics.tawk.help/article/using-abralytics-with-google-tag-manager-gtm"
 versions:
-  - sha: 9d84cbcea5bd33ee674f8a90f09b9ff41f4d1544
+  - sha: 825f79509aa942fcbd5acabb6cd197a5ee975897
     changeNotes: Initial Version
