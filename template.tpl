@@ -14,7 +14,7 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "Abralytics",
-  "categories": ["ANALYTICS", "MARKETING", "CONVERSIONS"],
+  "categories": ["ANALYTICS", "MARKETING"],
   "brand": {
     "id": "brand_dummy",
     "displayName": "",
@@ -48,24 +48,19 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const log = require('logToConsole');
 log('data =', data);
 
-const getReferrerUrl = require('getReferrerUrl');
-const getUrl = require('getUrl');
 const setInWindow = require('setInWindow');
-const sendPixel = require('sendPixel');
-const Object = require('Object');
-const Math = require('Math');
 const encodeUri = require('encodeUri');
 const encodeUriComponent = require('encodeUriComponent');
 const injectScript = require('injectScript');
 
-const defaultHostname = "staging.abralytics.com";
+const defaultHostname = "app.abralytics.com";
 const hostname = data.usingCustomDomain && data.customDomain ? data.customDomain : defaultHostname;
 const url = 'https://' + hostname;
 const path = url + '/assets/tracker/gtm.js';
 
 const abralyticsSettings = {
     websiteId: data.websiteId,
-    staging: data.staging
+    staging: data.staging || false
 };
 setInWindow("abralyticsSettings", abralyticsSettings);
 
@@ -172,74 +167,6 @@ ___WEB_PERMISSIONS___
   {
     "instance": {
       "key": {
-        "publicId": "get_referrer",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "urlParts",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
-        },
-        {
-          "key": "queriesAllowed",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
-        }
-      ]
-    },
-    "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
-        "publicId": "send_pixel",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "allowedUrls",
-          "value": {
-            "type": 1,
-            "string": "specific"
-          }
-        }
-      ]
-    },
-    "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
-        "publicId": "get_url",
-        "versionId": "1"
-      },
-      "param": [
-        {
-          "key": "urlParts",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
-        },
-        {
-          "key": "queriesAllowed",
-          "value": {
-            "type": 1,
-            "string": "any"
-          }
-        }
-      ]
-    },
-    "isRequired": true
-  },
-  {
-    "instance": {
-      "key": {
         "publicId": "inject_script",
         "versionId": "1"
       },
@@ -288,6 +215,6 @@ scenarios:
 
 ___NOTES___
 
-Created on 02/01/2024, 15:14:46
+Created on 02/01/2024, 15:57:27
 
 
